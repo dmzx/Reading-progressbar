@@ -1,0 +1,49 @@
+{% INCLUDE 'overall_header.html' %}
+{% INCLUDEJS '@dmzx_progressbar/jscolor/jscolor.js' %}
+
+<h1>{{ lang('ACP_PROGRESSBAR') }}</h1>
+
+<p><img src="https://img.shields.io/badge/{{ lang('ACP_PROGRESSBAR_VERSION') }}-{{ ACP_PROGRESSBAR_VERSION }}-green.svg?style=plastic" /></p>
+
+<form id="acp_progressbar_config" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('ACP_PROGRESSBAR_CONFIG_SET') }}</legend>
+		<dl>
+			<dt><label for="progressbar_enable">{{ lang('ACP_PROGRESSBAR_ENABLE') }}{{ lang('COLON') }}</label><br />
+			<span>{{ lang('ACP_PROGRESSBAR_ENABLE_EXPLAIN') }}</span></dt>
+			<dd><label><input type="radio" class="radio" name="progressbar_enable" value="1"{% if ACP_PROGRESSBAR_ENABLE %} id="progressbar_enable" checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+			<label><input type="radio" class="radio" name="progressbar_enable" value="0"{% if not ACP_PROGRESSBAR_ENABLE %} id="progressbar_enable" checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="progressbar_height">{{ lang('ACP_PROGRESSBAR_HEIGHT') }}{{ lang('COLON') }}</label><br /><span>{{ lang('ACP_PROGRESSBAR_HEIGHT_EXPLAIN') }}</span></dt>
+			<dd><input name="progressbar_height" type="number" id="progressbar_height" value="{{ PROGRESSBAR_HEIGHT }}" size="2" maxlength="2" min="1" style="text-align:center;" /></dd>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_PROGRESSBAR_LOCATION') }}{{ lang('COLON') }}</label><br /><span>{{ lang('ACP_PROGRESSBAR_LOCATION_EXP') }}</span></dt>
+			<dd>
+				<select name="progressbar_location">
+					<option id="progressbar_location_0" value="0" {% if PROGRESSBAR_LOCATION == 0 %}selected="selected"{% endif %}>{{ lang('ACP_PROGRESSBAR_LOCATION_0') }}</option>
+					<option id="progressbar_location_1" value="1" {% if PROGRESSBAR_LOCATION == 1 %}selected="selected"{% endif %}>{{ lang('ACP_PROGRESSBAR_LOCATION_1') }}</option>
+				</select>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="progressbar_colour_1">{{ lang('ACP_PROGRESSBAR_COLOUR_1') }}{{ lang('COLON') }}</label><br /><span>{{ lang('ACP_PROGRESSBAR_COLOUR_1_EXPLAIN') }}</span></dt>
+			<dd><input class="text post color {required:false,caps:false}" name="progressbar_colour_1" type="text" id="progressbar_colour_1" value="{{ PROGRESSBAR_COLOUR_1 }}" size="6" maxlength="6" /></dd>
+		</dl>
+		<dl>
+			<dt><label for="progressbar_colour_2">{{ lang('ACP_PROGRESSBAR_COLOUR_2') }}{{ lang('COLON') }}</label><br /><span>{{ lang('ACP_PROGRESSBAR_COLOUR_2_EXPLAIN') }}</span></dt>
+			<dd><input class="text post color {required:false,caps:false}" name="progressbar_colour_2" type="text" id="progressbar_colour_2" value="{{ PROGRESSBAR_COLOUR_2 }}" size="6" maxlength="6" /></dd>
+		</dl>
+	</fieldset>
+	<fieldset>
+		<p class="submit-buttons">
+			<input type="hidden" name="action" value="save" />
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+			{{ S_FORM_TOKEN }}
+		</p>
+	</fieldset>
+</form>
+
+{% INCLUDE 'overall_footer.html' %}

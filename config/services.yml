@@ -1,0 +1,16 @@
+services:
+    dmzx.progressbar.admin.controller:
+        class: dmzx\progressbar\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@template'
+            - '@log'
+            - '@user'
+            - '@request'
+    dmzx.progressbar.listener:
+        class: dmzx\progressbar\event\listener
+        arguments:
+            - '@template'
+            - '@config'
+        tags:
+            - { name: event.listener }
