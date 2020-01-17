@@ -45,7 +45,7 @@ class listener implements EventSubscriberInterface
 
 	public function add_page_header_link($event)
 	{
-		$location = ($this->config['progressbar_location'] == 1) ? ($this->config['progressbar_location'] == 0) : 'top' ;
+		$location = $this->config['progressbar_location'];
 
 		$this->template->assign_vars([
 			'PROGRESSBAR_ENABLE'	=> $this->config['progressbar_enable'],

@@ -1,7 +1,7 @@
 (function( $ ) {
 	'use strict';
 
-	$(window).load(function() {
+	$(window).on('load', function(){
 
 		var winHeight = $(window).height(),	docHeight = $(document).height();
 		var max = docHeight - winHeight;
@@ -13,7 +13,7 @@
 		var progressPosition = $('.readingProgressbar').attr('data-position');
 		var progressFixedOrAbsolute = 'fixed';
 
-		if ( progressPosition == 'top' ) {
+		if (progressPosition == '0') {
 			var progressTop = '0';
 			var progressBottom = 'auto';
 		} else {
